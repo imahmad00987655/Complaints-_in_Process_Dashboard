@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Dashboard</title>
+        <link rel="icon" type="image/x-icon" href="icons8-favicon-94.png">
+        <link rel="stylesheet" href="style.css">
+
+        <link rel="stylesheet"
+            href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+        <link rel="stylesheet"
+            href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+
+        <link rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css">
+
+        <link rel='stylesheet'
+            href='https://cdn.datatables.net/1.13.5/css/dataTables.bootstrap5.min.css'>
+
+        <link rel='stylesheet'
+            href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
+
+    </head>
+
+    <body>
+
+        <h1>Complaints in Process Dashboard</h1>
+        <div class="container">
+            <div class="card animated">
+                <div class="header1"><b>Date Range</b></div>
+                <div class="select" style="position: relative;">
+                    <select id="dateRangeSelect"
+                        onchange="handleDateRangeChange(this.value);">
+                        <option value="All">All</option>
+                        <!-- Yesterday -->
+                        <option value="Yesterday">Yesterday</option>
+                        <option value="Last 7 Days">Last 7 Days</option>
+                        <option value="Last 30 Days">Last 30 Days</option>
+                        <option value="This Month">This Month</option>
+                        <option value="This Year">This Year</option>
+                        <option value="Custom">Custom Range</option>
+                    </select>
+                    <div id="customDateRange" style="display:none;">
+                        <input type="date" id="startDate"> to <input type="date"
+                            id="endDate">
+                        <button onclick="applyDateRange()">Apply</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="header1"><b>Select Region</b></div>
+                <div class="select">
+                    <button class="region-btn">0</button>
+                    <button class="region-btn">All</button>
+                    <button class="region-btn">Karachi</button>
+                    <button class="region-btn">Lahore</button>
+                </div>
+            </div>
+            <div class="card">
+                <div class="header1"><b>Current Status</b></div>
+                <div class="select">
+                    <button class="status-btn">All</button>
+                    <button class="status-btn">Operation</button>
+                    <button class="status-btn">Logistic</button>
+                    <button class="status-btn">Factory</button>
+                    <button class="status-btn">Costing</button>
+                    <button class="status-btn">Adjustment</button>
+                    <button class="status-btn">Inspection</button>
+                </div>
+            </div>
+            <div class="card large">
+                <div class="header"><b>Pending Count</b></div>
+                <div id="open-count"></div>
+                <br>
+
+                <div class="row-container">
+                    <div id="total-counts"></div>
+                    <div id="container"></div>
+                </div>
+            </div>
+
+            <h2>Zone</h2>
+
+            <div class="card full-width">
+                <div class="header"></div>
+                <div class="chart">
+                    <div id="container22"></div>
+                </div>
+            </div>
+
+            <h2>User-Wise Count</h2>
+
+            <div class="card full-width">
+                <div class="header"></div>
+                <div id="scroll-wrapper">
+                    <div id="container43"></div>
+                </div>
+            </div>
+
+            <div class="container mt-5">
+                <table id="complaintsTable" class="display">
+                    <thead>
+                        <tr>
+                            <th>Current Status</th>
+                            <th>Cmp No</th>
+                            <th>From User</th>
+                            <th>Pending Since (Days)</th>
+                            <th>Issue in Mattress</th>
+                            <th>Complaint Latest Remarks</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th><input type="text"
+                                    placeholder="Search Status"></th>
+                            <th><input type="text"
+                                    placeholder="Search Cmp No"></th>
+                            <th><input type="text"
+                                    placeholder="Search User"></th>
+                            <th><input type="text"
+                                    placeholder="Search Days"></th>
+                            <th><input type="text"
+                                    placeholder="Search Issue"></th>
+                            <th><input type="text"
+                                    placeholder="Search Remarks"></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+        </div>
+
+        <footer class="cd__credit">Master Molty Foam <a title
+                href="https://moltyfoam.com.pk/"
+                target="_blank">-Master</a></footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src='https://code.jquery.com/jquery-3.7.0.js'></script>
+        <!-- Data Table JS -->
+        <script
+            src='https://cdn.datatables.net/1.13.5/js/jquery.dataTables.min.js'></script>
+        <script
+            src='https://cdn.datatables.net/responsive/2.1.0/js/dataTables.responsive.min.js'></script>
+        <script
+            src='https://cdn.datatables.net/1.13.5/js/dataTables.bootstrap5.min.js'></script>
+
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script
+            src="https://code.highcharts.com/modules/series-label.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script
+            src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script
+            src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <!-- jQuery -->
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+        <!-- Bootstrap JS -->
+        <script
+            src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <!-- DataTables JS -->
+        <script
+            src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+        <script src="script8.js"></script>
+
+    </body>
+
+</html>

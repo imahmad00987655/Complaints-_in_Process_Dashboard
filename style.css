@@ -1,0 +1,318 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(to bottom, #d8d8e9, #d9e2ec); 
+    padding: 20px;
+    color: #333;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #000000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+
+
+}
+
+.card {
+    background: linear-gradient(to right, #8e9194, #a7bbcc); 
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: calc(33% - 20px);
+    box-sizing: border-box;
+    position: relative;
+    min-width: 280px;
+    height: auto;
+    min-height: 150px;
+   
+}
+
+.large {
+    flex: 100%;
+    text-align: center;
+    font-size: 2em;
+    /* Smaller font size */
+    min-height: 100px;
+    /* Smaller card size */
+
+}
+
+.full-width {
+    flex: 100%;
+}
+
+.header {
+    font-size: 1.4em;
+    color: #414141;
+    margin-bottom: 15px;
+}
+
+.header1 {
+    font-size: 1.4em;
+    color: #414141;
+    margin-bottom: 15px;
+    margin-left: 130px;
+
+}
+
+.select button,
+select {
+    width: 100%;
+    padding: 8px 12px;
+    margin-top: 8px;
+    font-size: 1em;
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    background-color: #96a4e6;
+    cursor: pointer;
+    transition: all 0.3s;
+    border: 2px solid black;
+
+}
+
+.select button:hover,
+select:hover {
+    background-color: #dedede;
+}
+
+.chart {
+    width: 100%;
+    height: 250px;
+}
+
+/* Button alignment in a row */
+.select {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+
+}
+
+.select button {
+    flex-grow: 1;
+    /* Allows button to grow to fill space */
+    max-width: calc(100%/3 - 10px);
+    /* Ensures 3 buttons per row */
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background: linear-gradient(90deg, #424242 0%, #303030 100%);
+    color: #e0e0e0;
+}
+
+.dark-mode .card {
+    background: linear-gradient(90deg, #333333 0%, #424242 100%);
+    color: #fff;
+}
+
+.dark-mode select,
+.dark-mode button {
+    background-color: #525252;
+    color: #fff;
+    border-color: #666;
+}
+
+.dark-mode select:hover,
+.dark-mode button:hover {
+    background-color: #414141;
+}
+
+/* Toggle Button Style */
+#darkModeToggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transition: background-color 0.3s;
+}
+
+#darkModeToggle:hover {
+    background-color: #e0e0e0;
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+    }
+
+    .select button {
+        max-width: 100%;
+        /* Full width for mobile */
+    }
+}
+
+/* pending css */
+
+#open-count {
+    text-align: center;
+    margin: -10px;
+    font-size: 24px;
+    color: #000000;
+    /* Bootstrap danger color */
+}
+
+
+/* Doughnut chart */
+/* Flex container for row alignment */
+.row-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    padding: 10px;
+}
+
+/* Style for the total count display */
+#total-counts {
+    flex: 1;
+    margin-right: 20px;
+    font-size: 18px;
+}
+
+/* Basic styles for the chart container */
+#container {
+    flex: 2;
+    height: 700px;
+    width: 10%;
+}
+
+/* Style adjustments for smaller screens */
+@media (max-width: 768px) {
+    .row-container {
+        flex-direction: column;
+    }
+
+    #total-counts {
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    #container {
+        height: 400px;
+    }
+}
+
+/* Bar line zone */
+
+#container22 {
+    width: 100%;
+    height: 300px;
+    margin-top: -20px;
+}
+
+
+
+#scroll-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    border: 1px solid #ddd;
+    /* Optional: adds a border around the chart */
+    padding-bottom: 15px;
+    /* Space for the scrollbar */
+}
+
+/* Style for the Highcharts container */
+#container43 {
+    width: 2500px;
+    
+    height: 400px;
+    margin: 0 auto;
+}
+
+/* Customize the scrollbar */
+#scroll-wrapper::-webkit-scrollbar {
+    height: 10px;
+}
+
+#scroll-wrapper::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+#scroll-wrapper::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 5px;
+}
+
+#scroll-wrapper::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+
+/* Style adjustments */
+.card.full-width {
+    width: 45%;
+    
+}
+
+table {
+    width: 40%; /* Full width */
+    height: 50%;
+    border-style: groove;
+    border-width: 10px;
+    
+}
+/* DataTable pagination button */
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    padding: 0.8em;
+}
+/* DataTable search input */
+.dataTables_wrapper .dataTables_filter input {
+    border-radius: 0.35em;
+}
+/* Hide Highcharts credits */
+.highcharts-credits {
+    display: none !important;
+}
+/* Centered heading */
+h2 {
+    text-align: center;
+}
+
+/* Hiding the Highcharts credits */
+.highcharts-credits {
+    display: none !important;
+}
+
+
+
+
+button {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 10px;
+    cursor: pointer;
+}
+
+button.active {
+    background-color: #007bff;
+    color: #fff;
+}
+
+button:hover {
+    background-color: #0056b3;
+    color: #fff;
+}
